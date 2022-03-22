@@ -1,3 +1,48 @@
+
+
+<h1>*ngFor para products</h1>
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img width="100" [src]="product.image" alt="image">
+    <h2>{{ product.price }}</h2>
+    <p>{{ product.name }}</p>
+
+  </div>
+</div>
+
+
+<h1>*ngFor</h1>
+<input type="text" required [(ngModel)]="newName" />
+<button (click)="addName()">Agregar Nombre</button>
+
+<ul>
+  <li *ngIf="names.length === 0 ">No hay mas elementos que borrar</li>
+  <li *ngFor="let name of names; index as i" >
+    {{ i }} {{ name }}
+    <button (click)="deleteName(i)">DELETE</button>
+  </li>
+
+</ul>
+
+<h1>*ngIf</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<p *ngIf="person.name == 'chris'">Soy Christopher</p>
+<p *ngIf="person.name == 'chan' && person.age ===18; else myBloqueElse" >Soy Chantres</p>
+<ng-template #myBloqueElse>
+  <p>Bloque de Else</p>
+</ng-template>
+
+<h1>NgModel</h1>
+<p>Nombre {{ person.name}} </p>
+<input type="text" required #nameInput = "ngModel" [(ngModel)]="person.name" />
+<p>Valid : {{nameInput.valid }}</p>
+
+
+
+<input type="number"  max="50" min = "10" required #ageInput = "ngModel" [(ngModel)]="person.age" />
+<p>Valid : {{ageInput.valid }}</p>
+
+<hr/>
 <h1>Eventos</h1>
 
 <button [disabled]= "btnDisabled"> Enviar </button>
@@ -5,9 +50,12 @@
 
 <p>Edad {{ person.age }}</p>
 <button (click)="aumentaEdad()">Age ++</button>
+
 <div class ="box" (scroll)="onScroll($event)">
   <p>The employee, who asked NOW not to disclose anyone’s names, said the suspects fled the scene tearing up from the pepper spray. His father, the owner, sustained injuries after being hit with the butt of a gun. The employee who spoke to NOW says he only arrived to the scene afterwards. His father and brother were working at the store.</p>
 </div>
+<input type="text" [value]="person.name" (keyup)="changeName($event)">
+<p>Nombre {{ person.name }}</p>
 
 <h1>Properties</h1>
 <button [disabled]="btnDisabled"> Enviar</button>
@@ -15,6 +63,8 @@
 <progress max="100" [value]="person.age"></progress>
 <img width="100" [src]="person.avatar" >
 <hr/>
+
+
 <h1>Hola Mundo</h1>
 <h2>{{'Hola Mundo'.repeat(5)}}</h2>
 <p>3 = 3 = {{3+3}}</p>

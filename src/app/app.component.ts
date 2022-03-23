@@ -17,6 +17,12 @@ export  class AppComponent {
   }
  names: string[] = ['Chris','Tops','Chantres','Dolores','Emilia'];
  newName = '';
+
+ register = {
+   name: '',
+   password: '',
+   email: ''
+ }
  products: Product[] = [
 
    {name: 'El mejor juguete',
@@ -75,5 +81,7 @@ export  class AppComponent {
   deleteName(index: number){
     this.names.splice(index,1);
   }
-
+  onRegister() {
+    console.log(this.register);
+  }
 }
